@@ -1,14 +1,15 @@
 import { useReducer } from 'react';
+import DigitButton from './DigitButton';
 import './styles.css';
 
-const ACTIONS = {
+export const ACTIONS = {
   ADD_DIGIT: 'add-digit', 
   CHOOSE_OPERATION: 'choose-operation',
   CLEAR: 'clear',
   DELETE_DIGIT: 'delete-digit',
   EVALUATE: 'evaluate'
 
-}
+} 
 
 function reducer(state, { type, payload  }) {
   switch(type) {
@@ -23,7 +24,6 @@ function reducer(state, { type, payload  }) {
 function App() {
   const [{currentOperand, previousOperand, operation}, dispatch] = useReducer(reducer, {})
 
-  dispatch({type: ACTIONS.ADD_DIGIT, payload: { digit: 1 }})
   return (
     <div className="calculator-grid">
       <div className="output">
@@ -32,11 +32,11 @@ function App() {
     </div>
     <button className="span-two">AC</button>
     <button>DEL</button>
-    <button>÷</button>
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>*</button>
+    {/* <DigitButton digit="÷" dispatch={dispatch} />  */}
+    <DigitButton digit="1" dispatch={dispatch} /> 
+    <DigitButton digit="2" dispatch={dispatch} /> 
+    <DigitButton digit="3" dispatch={dispatch} /> 
+    
     <button>4</button>
     <button>5</button>
     <button>6</button>
